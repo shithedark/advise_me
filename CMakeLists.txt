@@ -30,6 +30,7 @@ qt_add_qml_module(appbase
         SOURCES
         SOURCES
         SOURCES SignIn/Logic/signinrepository.h SignIn/Logic/signinrepository.cpp
+        QML_FILES
     )
 
 

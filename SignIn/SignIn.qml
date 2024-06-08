@@ -42,6 +42,7 @@ Rectangle {
         }
         ColoredTextField{
             placeholderText: qsTr("Password")
+            inputType: TextInput.Password
 
         }
 
@@ -70,11 +71,16 @@ Rectangle {
 
     Button {
         anchors.bottom: parent.bottom
+        anchors.margins: 5
         width : buttonText.width
+        height : buttonText.height
         x : 5
         flat : true
         highlighted: false
         hoverEnabled: false
+        background:  Rectangle{
+            color : systemTheme.base
+        }
         Text {
             id : buttonText
             anchors.centerIn: parent

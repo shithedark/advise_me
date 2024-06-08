@@ -5,6 +5,7 @@ import QtQuick.Layouts
 ColumnLayout {
     required property string placeholderText
     property color mainColor : systemTheme.highlight
+    property int inputType: TextInput.Normal
     Text{
         text: placeholderText
         color : mainColor
@@ -12,7 +13,7 @@ ColumnLayout {
     TextField{
         Layout.fillWidth: true
         Layout.preferredHeight: 40
-
+        echoMode : inputType
         background: Rectangle{
             color : systemTheme.base
             radius: 5
