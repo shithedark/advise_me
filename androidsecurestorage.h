@@ -1,9 +1,8 @@
 #ifndef ANDROIDSECURESTORAGE_H
 #define ANDROIDSECURESTORAGE_H
 
-#include <QObject>
-#include <securestorage.h>
-#include<QJniObject>
+#include "securestorage.h"
+
 #include <QGuiApplication>
 
 
@@ -15,12 +14,11 @@ public:
 
 signals:
 
+
 public slots :
     QString get(QString key);
-private :
-    QJniObject activity;
-    QJniObject secureStorage;
 
 };
+
 
 #endif // ANDROIDSECURESTORAGE_H

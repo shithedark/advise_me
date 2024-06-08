@@ -1,9 +1,7 @@
 #include <QGuiApplication>
 #include <QQmlApplicationEngine>
-#include<QJniObject>
-#include <androidsecurestorage.h>
-#include<securestoragefactory.h>
-
+#include "androidsecurestorage.h"
+#include "SignIn/Logic/signinrepository.h"
 int main(int argc, char *argv[])
 {
     QGuiApplication app(argc, argv);
@@ -17,8 +15,10 @@ int main(int argc, char *argv[])
         []() { QCoreApplication::exit(-1); },
         Qt::QueuedConnection);
 
-    SecureStorage* s = SecureStorageFactory::getSecureStorage(&engine);
-    qDebug() << s->get("key");
+    qmlRegisterType<SignInRepository>("SignInRepository", 1, 0, "SignInRepository");
+
+
+    AndroidSecureStorage android = AndroidSecureStorage();
 
 
 

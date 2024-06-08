@@ -1,26 +1,23 @@
 import QtQuick
 import QtQuick.Layouts
 import QtQuick.Controls
+import SignIn
 Window {
-    width: 640
-    height: 480
+    id : app
+    minimumHeight: 768
+    maximumHeight: 768
+    minimumWidth: 1024
+    maximumWidth:1024
     visible: true
     title: qsTr("Hello World")
-
-    ColumnLayout{
-        anchors.fill: parent
-        TextField{
-            placeholderText: qsTr("Email")
-        }
-        TextField{
-            placeholderText: qsTr("Email")
-        }
-        TextField{
-            placeholderText: qsTr("Email")
-        }
-        TextField{
-            placeholderText: qsTr("Email")
-        }
-
+    SystemPalette {
+        id : systemTheme
+        colorGroup: SystemPalette.Active
     }
+
+    SignIn{
+        anchors.fill : parent
+    }
+
+
 }
