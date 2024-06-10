@@ -6,6 +6,7 @@ ColumnLayout {
     required property string placeholderText
     property color mainColor : systemTheme.highlight
     property int inputType: TextInput.Normal
+    property string  inputText
     Text{
         text: placeholderText
         color : mainColor
@@ -21,5 +22,8 @@ ColumnLayout {
         }
 
         color : mainColor
+        onTextChanged: {
+            inputText = text
+        }
     }
 }

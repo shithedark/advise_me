@@ -17,6 +17,7 @@ Rectangle {
     }
 
     SignInRepository{
+        id : signIN
 
     }
 
@@ -62,6 +63,9 @@ Rectangle {
                 border.color: systemTheme.highlight
                 radius: 2
             }
+            onClicked: {
+                signIN.request({}, {"email":"shi@gmail.com", "password" : "123456789."})
+            }
         }
 
 
@@ -87,6 +91,7 @@ Rectangle {
             text : qsTr("Don't have an account ? Sing Up")
             color : systemTheme.highlight
         }
+
 
     }
 

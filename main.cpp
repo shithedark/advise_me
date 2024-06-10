@@ -15,6 +15,7 @@ int main(int argc, char *argv[])
         []() { QCoreApplication::exit(-1); },
         Qt::QueuedConnection);
 
+    NetworkManagerAccessor::init(&engine);
     qmlRegisterType<SignInRepository>("SignInRepository", 1, 0, "SignInRepository");
 
 

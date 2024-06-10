@@ -15,7 +15,7 @@ public:
         networkAccessManager=new QNetworkAccessManager(parent);
     }
 
-    QNetworkAccessManager* getInstance();
+    static QNetworkAccessManager* getInstance();
 signals:
 
 private :
