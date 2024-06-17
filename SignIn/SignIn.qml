@@ -3,6 +3,7 @@ import QtQuick.Shapes
 import QtQuick.Layouts
 import QtQuick.Controls
 import SignInRepository
+import QtQuick.Dialogs
 import "UIComponents"
 Rectangle {
     id : base
@@ -18,10 +19,15 @@ Rectangle {
 
     SignInRepository{
         id : signIN
+        onLoading: {
+            popupText.text=qsTr("Validating Your Data")
+            stack.currentIndex=1
+        }
 
     }
 
     ColumnLayout{
+        id: columnLayout
         width: base.width*0.3
         y : -height
         x: 20
@@ -38,35 +44,104 @@ Rectangle {
         }
 
         ColoredTextField{
+            id: email
             placeholderText: qsTr("Email")
 
         }
         ColoredTextField{
+            id: password
             placeholderText: qsTr("Password")
             inputType: TextInput.Password
 
         }
-
-        Button{
-            Layout.preferredWidth: 200
-            Layout.preferredHeight: 40
-
-            Text{
-                text : qsTr("Sign in")
-                color: systemTheme.highlight
-                anchors.centerIn: parent
-            }
-
+        Rectangle{
+            id : popUPDialogContainer
             Layout.alignment: Qt.AlignCenter
-            background: Rectangle{
-                color : systemTheme.base
-                border.color: systemTheme.highlight
-                radius: 2
-            }
-            onClicked: {
-                signIN.request({}, {"email":"shi@gmail.com", "password" : "123456789."})
-            }
+
+            Popup {
+                id: popup
+                parent : popUPDialogContainer
+                anchors.centerIn: popUPDialogContainer
+                modal: true
+                focus: true
+                closePolicy: Popup.NoAutoClose
+                onActiveFocusChanged: {
+                    if(activeFocus){
+                        popUpTimer.start()
+                    }
+
+                }
+
+                contentItem: Text{
+                    id : popupText
+                    text: qsTr("Incorrect Email or Password")
+                    color : systemTheme.highlight
+                }
+                enter: Transition {
+                       NumberAnimation { property: "opacity"; from: 0.0; to: 1.0 }
+                   }
+                exit: Transition {
+                        NumberAnimation { property: "opacity"; from: 1.0; to: 0.0 }
+                    }
+                Timer {
+                        id : popUpTimer
+                        interval: 2000
+                        onTriggered: popup.close()
+                    }
+                }
+
+
+
         }
+
+
+
+        StackLayout{
+            id : stack
+            Layout.maximumWidth: 200
+            Layout.preferredHeight: 40
+            Layout.alignment: Qt.AlignCenter
+
+            Button{
+                id : signInButton
+
+                Text{
+                    text : qsTr("Sign in")
+                    color: systemTheme.highlight
+                    anchors.centerIn: parent
+                }
+                background: Rectangle{
+                    color : systemTheme.base
+                    border.color: systemTheme.highlight
+                    radius: 2
+                }
+                onClicked: {
+                    popup.open()
+
+                    signIN.request({}, {"email":email.inputText, "password" : password.inputText})
+                }
+            }
+
+
+        Item{
+                ProgressBar{
+                        width: parent.width
+                        height : 10
+                        indeterminate : true
+                        anchors.centerIn: parent
+                    }
+
+            }
+
+
+
+
+
+
+
+        }
+
+
 
 
 

@@ -12,8 +12,10 @@ public:
     explicit SignInRepository(QObject *parent = nullptr);
 
 signals:
+    void loading();
 public slots :
     void request(QMap<QString,QVariant> header, QMap<QString,QVariant> body);
+    void processResponse(QByteArray response);
 
 private :
     WebRequest webrequest;
