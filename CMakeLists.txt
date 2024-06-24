@@ -4,7 +4,7 @@ project(base VERSION 0.1 LANGUAGES CXX)
 
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-find_package(Qt6 6.4 REQUIRED COMPONENTS Quick Network)
+find_package(Qt6 6.4 REQUIRED COMPONENTS Quick Network Qml)
 
 qt_standard_project_setup()
 
@@ -27,12 +27,15 @@ qt_add_qml_module(appbase
         SOURCES securestoragefactory.h securestoragefactory.cpp
         SOURCES networkmanageraccessor.h networkmanageraccessor.cpp
         SOURCES androidsecurestorage.h
-        SOURCES
-        SOURCES
-        SOURCES SignIn/Logic/signinrepository.h SignIn/Logic/signinrepository.cpp
         QML_FILES
         SOURCES
         SOURCES webrequest.h webrequest.cpp
+        SOURCES repository.h repository.cpp
+        SOURCES
+        SOURCES
+        SOURCES profile.h profile.cpp
+        SOURCES
+        SOURCES deSerilize.h
     )
 
 
@@ -53,7 +56,7 @@ set_property(TARGET appbase APPEND PROPERTY
 )
 
 target_link_libraries(appbase
-    PRIVATE Qt6::Quick Qt6::Network PlatformStorageplugin SignInplugin
+    PRIVATE Qt6::Quick Qt6::Network Qt6::Qml PlatformStorageplugin SignInplugin
 )
 
 include(GNUInstallDirs)

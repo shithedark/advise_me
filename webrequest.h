@@ -10,6 +10,10 @@
 #include<QJsonObject>
 #include <QJsonDocument>
 
+enum Response {
+    Successful,WrongCredentials
+};
+
 
 class WebRequest : public QObject
 {
@@ -19,6 +23,8 @@ public:
 
 signals:
     void success(QByteArray response);
+    void failure(QNetworkReply::NetworkError responseError);
+
 
 
 public slots :

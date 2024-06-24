@@ -7,7 +7,7 @@ add_library(SignIn STATIC)
 
 
 
-find_package(Qt6 6.4 REQUIRED COMPONENTS Quick Network)
+find_package(Qt6 6.4 REQUIRED COMPONENTS Quick Network  )
 set( cur_path ${CMAKE_CURRENT_SOURCE_DIR} )
 cmake_path(GET cur_path PARENT_PATH parent_path)
 set( includes ${parent_path}/ )
@@ -17,9 +17,13 @@ qt_add_qml_module(SignIn
         URI "SignIn"
         VERSION 1.0
         QML_FILES SignIn.qml ../UIComponents/ColoredTextField.qml
-        SOURCES Logic/signinrepository.h Logic/signinrepository.cpp
-
-
+        SOURCES signinrepository.h signinrepository.cpp
+        QML_FILES
+        QML_FILES
+        QML_FILES
+        QML_FILES ShapeAndAnimation.qml
+        QML_FILES SigninForm.qml
+        QML_FILES PopUpDialog.qml
     )
 
 target_link_libraries(SignIn

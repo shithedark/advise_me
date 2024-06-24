@@ -4,24 +4,25 @@ import QtQuick.Layouts
 
 ColumnLayout {
     required property string placeholderText
-    property color mainColor : systemTheme.highlight
+    property color mainColor: systemTheme.highlight
     property int inputType: TextInput.Normal
-    property string  inputText
-    Text{
+    property string inputText
+    Text {
         text: placeholderText
-        color : mainColor
+        color: systemTheme.highlight
     }
-    TextField{
+    TextField {
+
         Layout.fillWidth: true
         Layout.preferredHeight: 40
-        echoMode : inputType
-        background: Rectangle{
-            color : systemTheme.base
+        echoMode: inputType
+        background: Rectangle {
+            color: systemTheme.base
             radius: 5
-            border.color : systemTheme.highlight
+            border.color: systemTheme.highlight
         }
 
-        color : mainColor
+        color: mainColor
         onTextChanged: {
             inputText = text
         }

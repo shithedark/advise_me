@@ -20,21 +20,16 @@ void WebRequest::post(QMap<QString,QVariant> header, QMap<QString,QVariant> body
     QNetworkReply* reply = NetworkManagerAccessor::getInstance()->post(request, data );
 
     connect(reply, &QNetworkReply::finished, this , [=]{
-        QNetworkReply::NetworkError networkError = reply->error();
-        if(networkError == QNetworkReply::InternalServerError){
-            reply->deleteLater();
-            this->post(header, body);
-        }else if(reply->error() == QNetworkReply::NoError){
-            qDebug()<< reply->readAll();
+        //request was sent and we have a reply
+        //could be successful login or failure due to wrong credentials
+        if(reply->error() == QNetworkReply::NoError){
             emit success(reply->readAll());
-            reply->deleteLater();
-        }else{
-            qDebug()<< reply->errorString();
+            }
 
-        }
     } );
     connect(reply, &QNetworkReply::errorOccurred, this , [=]{
-        emit success(reply->readAll());
+        QNetworkReply::NetworkError networkError = reply->error();
+        emit failure(networkError);
         reply->deleteLater();
     } );
 

@@ -1,0 +1,110 @@
+import QtQuick
+import QtQuick.Shapes
+import QtQuick.Layouts
+import QtQuick.Controls
+import QtQuick.Dialogs
+import SignIn 1.0
+import "UIComponents"
+
+ColumnLayout {
+    id: columnLayout
+    width: parent.width * 0.3
+    y: -height
+    spacing: 20
+
+    SignInRepository {
+        id: signInBackend
+    }
+
+    function startAnimation() {
+        forumAnimation.start()
+    }
+
+    NumberAnimation on y {
+        id: forumAnimation
+        to: parent.height * 0.25
+        duration: 500
+        onFinished: {
+
+        }
+    }
+    Text {
+        text: qsTr("Sign In")
+        color: systemTheme.highlight
+        font.pixelSize: 21
+        font.bold: true
+    }
+
+    ColoredTextField {
+        id: email
+        placeholderText: qsTr("Email")
+    }
+    ColoredTextField {
+        id: password
+        placeholderText: qsTr("Password")
+        inputType: TextInput.Password
+    }
+    Button {
+        Layout.preferredWidth: buttonText.width
+        Layout.preferredHeight: buttonText.height
+        x: 5
+        flat: true
+        highlighted: false
+        hoverEnabled: false
+        background: Rectangle {
+            color: systemTheme.light
+        }
+        Text {
+            text: qsTr("Forgot password ? Reset.")
+            color: systemTheme.highlight
+        }
+    }
+
+    StackLayout {
+        id: stack
+        Layout.maximumWidth: 200
+        Layout.preferredHeight: 40
+        Layout.alignment: Qt.AlignCenter
+
+        Button {
+            id: signInButton
+
+            Text {
+                text: qsTr("Sign in")
+                color: systemTheme.highlight
+                anchors.centerIn: parent
+            }
+            background: Rectangle {
+                color: systemTheme.base
+                border.color: systemTheme.highlight
+                radius: 2
+            }
+            onClicked: {
+                if (email.inputText === "" || password.inputText === "") {
+                    popUPDialogContainer.popUpText = "Please fill all the fields"
+                    popUPDialogContainer.openPopUp()
+                } else {
+                    signInBackend.request({}, {
+                                              "email": email.inputText,
+                                              "password": password.inputText
+                                          })
+                }
+            }
+        }
+
+        Item {
+            ProgressBar {
+                width: parent.width
+                height: 10
+                indeterminate: true
+                anchors.centerIn: parent
+            }
+        }
+    }
+
+    PopUpDialog {
+        id: popUPDialogContainer
+        Layout.alignment: Qt.AlignCenter
+        Layout.preferredWidth: parent.width
+    }
+}
