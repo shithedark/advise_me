@@ -4,14 +4,13 @@ Profile::Profile(QObject *parent)
     : QObject{parent}
 {}
 
-Profile* Profile::fromJson(QJsonObject json, QObject*parent)
+Profile *Profile::fromJson(QJsonObject json, QObject *parent)
 {
-
-    Profile* profile  = deSerilize<Profile>(json, parent);
+    Profile *profile = deSerilize<Profile>(json, parent);
     return profile;
 }
 
-void Profile::setFirstName(const QString& value)
+void Profile::setFirstName(const QString &value)
 {
     _firstName = value;
     emit firstNameChanged(value);
@@ -27,9 +26,7 @@ void Profile::setEmail(const QString &value)
 {
     _email = value;
     emit emailChanged(value);
-
 }
-
 
 const QString &Profile::firstName()
 {
@@ -39,11 +36,9 @@ const QString &Profile::firstName()
 const QString &Profile::lastName()
 {
     return _lastName;
-
 }
 
 const QString &Profile::email()
 {
     return _email;
-
 }

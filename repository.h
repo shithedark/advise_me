@@ -9,7 +9,7 @@ class Repository : public QObject
     Q_OBJECT
 public:
     explicit Repository(QObject *parent = nullptr);
-signals :
+signals:
     void loading();
     void invalidData();
 };

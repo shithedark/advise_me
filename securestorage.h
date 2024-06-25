@@ -10,9 +10,8 @@ public:
     explicit SecureStorage(QObject *parent = nullptr);
 
 signals:
-public slots :
+public slots:
     virtual QString get(QString key) = 0;
-
 };
 
 #endif // SECURESTORAGE_H

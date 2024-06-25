@@ -4,8 +4,8 @@ NetworkManagerAccessor::NetworkManagerAccessor(QObject *parent)
     : QObject{parent}
 {}
 
-
-QNetworkAccessManager* NetworkManagerAccessor::getInstance(){
+QNetworkAccessManager *NetworkManagerAccessor::getInstance()
+{
     assert(networkAccessManager != nullptr);
     return networkAccessManager;
 }

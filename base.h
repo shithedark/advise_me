@@ -1,8 +1,8 @@
 #ifndef BASE_H
 #define BASE_H
 
-#include <QObject>
 #include <QGuiApplication>
+#include <QObject>
 #include <QQmlApplicationEngine>
 class Base : public QObject
 {
@@ -13,15 +13,15 @@ public:
 signals:
     void sessionExpired();
     void sessionFixed(int a);
-public slots :
+public slots:
     inline virtual void doThis(int a) = 0;
-    inline void fixSession(){
+    inline void fixSession()
+    {
         qDebug() << "Fixing session";
         //Working code
         qDebug() << "Session fixed";
 
         emit sessionFixed(1);
-
     }
 };
 

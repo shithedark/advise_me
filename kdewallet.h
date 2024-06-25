@@ -1,11 +1,11 @@
 #ifndef KDEWALLET_H
 #define KDEWALLET_H
 
-#include <QObject>
-#include<QDebug>
-#include <storage.h>
-#include <kwallet.h>
+#include <QDebug>
 #include <QGuiApplication>
+#include <QObject>
+#include <kwallet.h>
+#include <storage.h>
 
 class KDEWalletController : public Storage
 {
@@ -15,13 +15,13 @@ public:
 
 signals:
 
-
-// Storage interface
+    // Storage interface
 public slots:
-    void write(const QString& key,const  QByteArray & value)override;
-    int read(const QString& key,  QByteArray &  buffer)override;
-private :
-    KWallet::Wallet* wallet;
+    void write(const QString &key, const QByteArray &value) override;
+    int read(const QString &key, QByteArray &buffer) override;
+
+private:
+    KWallet::Wallet *wallet;
 };
 
 #endif // KDEWALLET_H

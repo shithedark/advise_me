@@ -1,5 +1,3 @@
 #include "securestoragefactory.h"
 
-SecureStorageFactory::SecureStorageFactory()
-
-{}
+SecureStorageFactory::SecureStorageFactory() {}

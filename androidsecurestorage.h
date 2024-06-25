@@ -5,7 +5,6 @@
 
 #include <QGuiApplication>
 
-
 class AndroidSecureStorage : public SecureStorage
 {
     Q_OBJECT
@@ -14,11 +13,8 @@ public:
 
 signals:
 
-
-public slots :
+public slots:
     QString get(QString key);
-
 };
-
 
 #endif // ANDROIDSECURESTORAGE_H

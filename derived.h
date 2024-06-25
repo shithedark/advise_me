@@ -11,17 +11,16 @@ public:
     explicit Derived(QObject *parent = nullptr);
 
 signals:
-public slots :
-    inline void doThis(int a)override{
+public slots:
+    inline void doThis(int a) override
+    {
         qDebug() << "Entered the job";
 
-
-        if(a==0){
+        if (a == 0) {
             emit sessionExpired();
-        }else{
+        } else {
             qDebug() << "I am doing my usual job";
         }
-
     }
 };
 

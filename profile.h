@@ -1,10 +1,10 @@
 #ifndef PROFILE_H
 #define PROFILE_H
 
+#include <QJsonDocument>
+#include <QJsonObject>
 #include <QObject>
 #include <QQmlEngine>
-#include<QJsonDocument>
-#include<QJsonObject>
 class Profile : public QObject
 {
     Q_OBJECT
@@ -15,20 +15,21 @@ class Profile : public QObject
 
 public:
     explicit Profile(QObject *parent = nullptr);
-    static Profile* fromJson(QJsonObject json, QObject*parent);
-public slots :
-    const QString & firstName();
+    static Profile *fromJson(QJsonObject json, QObject *parent);
+public slots:
+    const QString &firstName();
     const QString &lastName();
     const QString &email();
-    void setFirstName(const QString& value);
-    void setLastName(const QString& value);
-    void setEmail(const QString& value);
+    void setFirstName(const QString &value);
+    void setLastName(const QString &value);
+    void setEmail(const QString &value);
 
 signals:
-    void firstNameChanged(const QString& value);
-    void lastNameChanged(const QString& value);
-    void emailChanged(const QString& value);
-private :
+    void firstNameChanged(const QString &value);
+    void lastNameChanged(const QString &value);
+    void emailChanged(const QString &value);
+
+private:
     QString _firstName;
     QString _lastName;
     QString _email;

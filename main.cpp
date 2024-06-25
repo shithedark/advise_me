@@ -1,13 +1,13 @@
+#include <QDataStream>
 #include <QGuiApplication>
+#include <QJsonArray>
+#include <QJsonObject>
 #include <QQmlApplicationEngine>
-#include <networkmanageraccessor.h>
+#include <QSettings>
 #include "androidsecurestorage.h"
-#include<QSettings>
-#include<QJsonObject>
-#include<QJsonArray>
-#include<profile.h>
- #include <QDataStream>
-#include<kdewallet.h>
+#include <kdewallet.h>
+#include <networkmanageraccessor.h>
+#include <profile.h>
 
 int main(int argc, char *argv[])
 {
@@ -33,11 +33,7 @@ int main(int argc, char *argv[])
 
     engine.load(url);
 
-    KDEWalletController kDEWalletController;
-    kDEWalletController.write("asd" , QString("sdfsd").toUtf8());
-    QByteArray buffer;
-    kDEWalletController.read("asd", buffer);
-    qDebug() <<buffer;
+
 
     return app.exec();
 }

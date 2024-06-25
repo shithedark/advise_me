@@ -1,8 +1,8 @@
 #ifndef NETWORKACCESSMANAGERACCESSOR_H
 #define NETWORKACCESSMANAGERACCESSOR_H
 
-#include <QObject>
 #include <QNetworkAccessManager>
+#include <QObject>
 #include <QSharedPointer>
 
 class NetworkAccessManagerAccessor : public QObject
@@ -10,14 +10,13 @@ class NetworkAccessManagerAccessor : public QObject
     Q_OBJECT
 public:
     explicit NetworkAccessManagerAccessor(QObject *parent = nullptr);
-    static QNetworkAccessManager* getNetworkAccessManager();
-    static void initNetworkAccessManager(QObject* parent);
+    static QNetworkAccessManager *getNetworkAccessManager();
+    static void initNetworkAccessManager(QObject *parent);
 
 signals:
 
-
-private :
-    static QNetworkAccessManager* networkAccessManager;
+private:
+    static QNetworkAccessManager *networkAccessManager;
 };
 
 #endif // NETWORKACCESSMANAGERACCESSOR_H

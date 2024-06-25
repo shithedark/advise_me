@@ -3,4 +3,3 @@
 WebRequest::WebRequest(QObject *parent)
     : QObject{parent}
 {}
-
