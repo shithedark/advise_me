@@ -5,7 +5,7 @@
 #include <QNetworkReply>
 #include <QQmlEngine>
 #include<repository.h>
-#include <webrequest.h>
+#include<signinrequest.h>
 class SignInRepository : public Repository
 {
     Q_OBJECT
@@ -21,7 +21,7 @@ public slots :
     void handleError(QNetworkReply::NetworkError error);
 
 private :
-    WebRequest webrequest;
+    SignInRequest webrequest;
 
 
 

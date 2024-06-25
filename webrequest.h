@@ -28,7 +28,7 @@ signals:
 
 
 public slots :
-    void post(QMap<QString,QVariant> header, QMap<QString,QVariant> body);
+    virtual void post(QMap<QString,QVariant> header, QMap<QString,QVariant> body)=0;
 
 };
 

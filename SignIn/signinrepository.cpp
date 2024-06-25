@@ -19,7 +19,13 @@ void SignInRepository::request(QMap<QString,QVariant> header, QMap<QString,QVari
 void SignInRepository::processResponse(const QByteArray& response){
     QJsonDocument document = QJsonDocument::fromJson(response);
     QJsonObject rootObj = document.object();
-    qDebug() <<rootObj["code"].toInt();
+    switch (rootObj["code"].toInt()) {
+    case -1:
+        emit wrongCreds();
+        break;
+    default:
+        break;
+    }
 
 
 }

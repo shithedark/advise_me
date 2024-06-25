@@ -10,7 +10,8 @@ Rectangle {
     id: popUPDialogContainer
     property string popUpText
 
-    function openPopUp() {
+    function openPopUp(text) {
+        popUpText = text
         popup.open()
     }
 
@@ -30,7 +31,7 @@ Rectangle {
         contentItem: Text {
             horizontalAlignment: Text.AlignHCenter
             text: popUpText
-            color: systemTheme.text
+            color: systemTheme.highlight
         }
         enter: Transition {
             NumberAnimation {

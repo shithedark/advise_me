@@ -14,6 +14,14 @@ ColumnLayout {
 
     SignInRepository {
         id: signInBackend
+        onLoading: {
+            stack.currentIndex = 1
+        }
+
+        onWrongCreds: {
+            stack.currentIndex = 0
+            popUPDialogContainer.openPopUp("Wrong email or password")
+        }
     }
 
     function startAnimation() {
@@ -80,10 +88,15 @@ ColumnLayout {
                 radius: 2
             }
             onClicked: {
-                if (email.inputText === "" || password.inputText === "") {
-                    popUPDialogContainer.popUpText = "Please fill all the fields"
-                    popUPDialogContainer.openPopUp()
+                if (email.inputText === "") {
+                    email.state = "UnFilled"
+                    popUPDialogContainer.openPopUp("Please fill all the fields")
+                } else if (password.inputText === "") {
+                    password.state = "UnFilled"
+                    popUPDialogContainer.openPopUp("Please fill all the fields")
                 } else {
+                    email.state = "Filled"
+                    password.state = "Filled"
                     signInBackend.request({}, {
                                               "email": email.inputText,
                                               "password": password.inputText

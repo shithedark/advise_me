@@ -24,6 +24,7 @@ qt_add_qml_module(SignIn
         QML_FILES ShapeAndAnimation.qml
         QML_FILES SigninForm.qml
         QML_FILES PopUpDialog.qml
+        SOURCES signinrequest.h signinrequest.cpp
     )
 
 target_link_libraries(SignIn
