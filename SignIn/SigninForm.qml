@@ -22,6 +22,11 @@ ColumnLayout {
             stack.currentIndex = 0
             popUPDialogContainer.openPopUp("Wrong email or password")
         }
+        onInvalidData: {
+            stack.currentIndex = 0
+            popUPDialogContainer.openPopUp(
+                        "Invalid Data, make sure this is the right format")
+        }
     }
 
     function startAnimation() {
@@ -91,10 +96,17 @@ ColumnLayout {
                 if (email.inputText === "") {
                     email.state = "UnFilled"
                     popUPDialogContainer.openPopUp("Please fill all the fields")
-                } else if (password.inputText === "") {
+                } else {
+                    email.state = "Filled"
+                }
+
+                if (password.inputText === "") {
                     password.state = "UnFilled"
                     popUPDialogContainer.openPopUp("Please fill all the fields")
                 } else {
+                    password.state = "Filled"
+                }
+                if (email.inputText != "" && password.inputText != "") {
                     email.state = "Filled"
                     password.state = "Filled"
                     signInBackend.request({}, {
@@ -115,9 +127,5 @@ ColumnLayout {
         }
     }
 
-    PopUpDialog {
-        id: popUPDialogContainer
-        Layout.alignment: Qt.AlignCenter
-        Layout.preferredWidth: parent.width
-    }
+
 }

@@ -19,4 +19,11 @@ Window {
     SignIn {
         anchors.fill: parent
     }
+
+    PopUpDialog {
+        id: popUPDialogContainer
+        anchors.bottom: parent.bottom
+        anchors.right: parent.right
+        anchors.left: parent.left
+    }
 }

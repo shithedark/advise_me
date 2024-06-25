@@ -6,9 +6,9 @@ import QtQuick.Dialogs
 import SignIn 1.0
 import "UIComponents"
 
-Rectangle {
-    id: popUPDialogContainer
+Item {
     property string popUpText
+    height: popup.height
 
     function openPopUp(text) {
         popUpText = text
@@ -17,9 +17,11 @@ Rectangle {
 
     Popup {
         id: popup
+        background: Rectangle {
+            color: systemTheme.light
+        }
+
         width: parent.width
-        parent: popUPDialogContainer
-        anchors.centerIn: popUPDialogContainer
         focus: true
         closePolicy: Popup.NoAutoClose
         onActiveFocusChanged: {
@@ -29,6 +31,7 @@ Rectangle {
         }
 
         contentItem: Text {
+            id: textElement
             horizontalAlignment: Text.AlignHCenter
             text: popUpText
             color: systemTheme.highlight
