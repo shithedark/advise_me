@@ -5,7 +5,7 @@ project(base VERSION 0.1 LANGUAGES CXX)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 find_package(Qt6 6.4 REQUIRED COMPONENTS Quick Network Qml)
-
+find_package(KF6Wallet)
 qt_standard_project_setup()
 
 qt_add_executable(appbase
@@ -14,7 +14,6 @@ qt_add_executable(appbase
 
 add_subdirectory(android_cpp/)
 add_subdirectory(SignIn/)
-
 
 qt_add_qml_module(appbase
         URI base
@@ -36,6 +35,8 @@ qt_add_qml_module(appbase
         SOURCES profile.h profile.cpp
         SOURCES
         SOURCES deSerilize.h
+        SOURCES storage.h storage.cpp
+        SOURCES kdewallet.h kdewallet.cpp
     )
 
 
@@ -56,7 +57,7 @@ set_property(TARGET appbase APPEND PROPERTY
 )
 
 target_link_libraries(appbase
-    PRIVATE Qt6::Quick Qt6::Network Qt6::Qml PlatformStorageplugin SignInplugin
+    PRIVATE Qt6::Quick Qt6::Network Qt6::Qml KF6::Wallet PlatformStorageplugin SignInplugin
 )
 
 include(GNUInstallDirs)

@@ -7,6 +7,7 @@
 #include<QJsonArray>
 #include<profile.h>
  #include <QDataStream>
+#include<kdewallet.h>
 
 int main(int argc, char *argv[])
 {
@@ -31,6 +32,12 @@ int main(int argc, char *argv[])
     AndroidSecureStorage android = AndroidSecureStorage();
 
     engine.load(url);
+
+    KDEWalletController kDEWalletController;
+    kDEWalletController.write("asd" , QString("sdfsd").toUtf8());
+    QByteArray buffer;
+    kDEWalletController.read("asd", buffer);
+    qDebug() <<buffer;
 
     return app.exec();
 }

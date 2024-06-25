@@ -20,11 +20,11 @@ ColumnLayout {
 
         onWrongCreds: {
             stack.currentIndex = 0
-            app.popUPDialogContainer.openPopUp("Wrong email or password")
+            popUPDialogContainer.openPopUp("Wrong email or password")
         }
         onInvalidData: {
             stack.currentIndex = 0
-            app.popUPDialogContainer.openPopUp(
+            popUPDialogContainer.openPopUp(
                         "Invalid Data, make sure this is the right format")
         }
     }
@@ -118,11 +118,13 @@ ColumnLayout {
         }
 
         Item {
+            Layout.alignment: Qt.AlignCenter
+
             ProgressBar {
-                width: parent.width
                 height: 10
-                indeterminate: true
+                width: parent.width
                 anchors.centerIn: parent
+                indeterminate: true
             }
         }
     }
