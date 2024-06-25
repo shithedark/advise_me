@@ -16,14 +16,13 @@ include_directories( ${includes} )
 qt_add_qml_module(SignIn
         URI "SignIn"
         VERSION 1.0
-        QML_FILES SignIn.qml ../UIComponents/ColoredTextField.qml
+        QML_FILES SignIn.qml ../UIComponents/ColoredTextField.qml ../UIComponents/PopUpDialog.qml
         SOURCES signinrepository.h signinrepository.cpp
         QML_FILES
         QML_FILES
         QML_FILES
         QML_FILES ShapeAndAnimation.qml
         QML_FILES SigninForm.qml
-        QML_FILES PopUpDialog.qml
         SOURCES signinrequest.h signinrequest.cpp
     )
 

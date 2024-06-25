@@ -2,6 +2,7 @@ import QtQuick
 import QtQuick.Layouts
 import QtQuick.Controls
 import SignIn
+import "UIComponents"
 
 Window {
     id: app

@@ -4,7 +4,6 @@ import QtQuick.Layouts
 import QtQuick.Controls
 import QtQuick.Dialogs
 import SignIn 1.0
-import "UIComponents"
 
 Item {
     property string popUpText

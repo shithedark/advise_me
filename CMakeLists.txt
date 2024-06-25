@@ -20,7 +20,7 @@ qt_add_qml_module(appbase
         URI base
         VERSION 1.0
         QML_FILES
-        Main.qml UIComponents/ColoredTextField.qml
+        Main.qml UIComponents/ColoredTextField.qml UIComponents/PopUpDialog.qml
         RESOURCES android/src/org/qtproject/example/TestClass.java
         RESOURCES android/src/org/qtproject/example/SecureStorage.java
         SOURCES securestorage.h securestorage.cpp

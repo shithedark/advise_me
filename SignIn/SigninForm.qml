@@ -20,11 +20,11 @@ ColumnLayout {
 
         onWrongCreds: {
             stack.currentIndex = 0
-            popUPDialogContainer.openPopUp("Wrong email or password")
+            app.popUPDialogContainer.openPopUp("Wrong email or password")
         }
         onInvalidData: {
             stack.currentIndex = 0
-            popUPDialogContainer.openPopUp(
+            app.popUPDialogContainer.openPopUp(
                         "Invalid Data, make sure this is the right format")
         }
     }
@@ -126,6 +126,4 @@ ColumnLayout {
             }
         }
     }
-
-
 }
